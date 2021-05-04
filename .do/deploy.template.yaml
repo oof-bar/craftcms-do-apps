@@ -1,81 +1,82 @@
 # See everything supported by App Spec, here:
 # https://docs.digitalocean.com/products/app-platform/references/app-specification-reference/
 
-name: craftcms
+spec:
+    name: craftcms
 
-services:
-    -
-        name: web
-        github:
-            branch: main
-            repo: oof-bar/craftcms-do-apps
-        build_command: yarn build
-        environment_slug: php
-        run_command: heroku-php-nginx -C nginx.conf /workspace/web/
-        http_port: 8080
+    services:
+        -
+            name: web
+            github:
+                branch: main
+                repo: oof-bar/craftcms-do-apps
+            build_command: yarn build
+            environment_slug: php
+            run_command: heroku-php-nginx -C nginx.conf /workspace/web/
+            http_port: 8080
 
-workers:
-    -
-        name: worker
-        environment_slug: php
-        github:
-            branch: main
-            repo: oof-bar/craftcms-do-apps
-        run_command: /usr/bin/env php /workspace/craft queue/listen --verbose
+    workers:
+        -
+            name: worker
+            environment_slug: php
+            github:
+                branch: main
+                repo: oof-bar/craftcms-do-apps
+            run_command: /usr/bin/env php /workspace/craft queue/listen --verbose
 
-jobs:
-    -
-        name: release
-        environment_slug: php
-        github:
-            branch: main
-            repo: oof-bar/craftcms-do-apps
-        kind: POST_DEPLOY
-        run_command: /workspace/release.sh
+    jobs:
+        -
+            name: release
+            environment_slug: php
+            github:
+                branch: main
+                repo: oof-bar/craftcms-do-apps
+            kind: POST_DEPLOY
+            run_command: /workspace/release.sh
 
-databases:
-    -
-        cluster_name: postgres
-        db_name: craft
-        db_user: craft
-        engine: PG
-        name: postgres
-        production: true
-        version: "12"
-    -
-        cluster_name: redis
-        engine: REDIS
-        name: redis
-        production: true
-        version: "6"
+    databases:
+        -
+            cluster_name: postgres
+            db_name: craft
+            db_user: craft
+            engine: PG
+            name: postgres
+            production: true
+            version: "12"
+        -
+            cluster_name: redis
+            engine: REDIS
+            name: redis
+            production: true
+            version: "6"
 
-envs:
-    -
-        key: CRAFT_LICENSE_KEY
-        scope: RUN_AND_BUILD_TIME
-        value: Add your Craft license key
-    -
-        key: CRAFT_STORAGE_PATH
-        scope: RUN_AND_BUILD_TIME
-        value: /tmp
-    -
-        key: ENVIRONMENT
-        scope: RUN_AND_BUILD_TIME
-        value: production
-    -
-        key: SECURITY_KEY
-        scope: RUN_AND_BUILD_TIME
-        value: Generate your own, secure random key!
-        type: SECRET
-    -
-        key: BASE_URL
-        scope: RUN_AND_BUILD_TIME
-        value: ${APP_URL}
-    -
-        key: REDIS_URL
-        scope: RUN_AND_BUILD_TIME
-        value: ${redis.REDIS_URL}
-    -
-        key: DATABASE_URL
-        scope: RUN_AND_BUILD_TIME
-        value: ${postgres.DATABASE_URL}
+    envs:
+        -
+            key: CRAFT_LICENSE_KEY
+            scope: RUN_AND_BUILD_TIME
+            value: Add your Craft license key
+        -
+            key: CRAFT_STORAGE_PATH
+            scope: RUN_AND_BUILD_TIME
+            value: /tmp
+        -
+            key: ENVIRONMENT
+            scope: RUN_AND_BUILD_TIME
+            value: production
+        -
+            key: SECURITY_KEY
+            scope: RUN_AND_BUILD_TIME
+            value: Generate your own, secure random key!
+            type: SECRET
+        -
+            key: BASE_URL
+            scope: RUN_AND_BUILD_TIME
+            value: ${APP_URL}
+        -
+            key: REDIS_URL
+            scope: RUN_AND_BUILD_TIME
+            value: ${redis.REDIS_URL}
+        -
+            key: DATABASE_URL
+            scope: RUN_AND_BUILD_TIME
+            value: ${postgres.DATABASE_URL}
