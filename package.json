@@ -1,0 +1,12 @@
+{
+  "name": "craftcms-do-apps",
+  "version": "1.0.0",
+  "description": "One-click infrastructure for Craft CMS applications.",
+  "main": "src/js/app.js",
+  "repository": "https://github.com/oof-bar/craftcms-do-apps.git",
+  "author": "August Miller <hello@gusmiller.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "echo 'Build step!'"
+  }
+}

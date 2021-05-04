@@ -1,0 +1,8 @@
+# Dependencies
+vendor
+node_modules
+
+# Runtime, secrets
+.env
+storage
+web/cpresources
