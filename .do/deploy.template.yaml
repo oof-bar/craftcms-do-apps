@@ -7,11 +7,10 @@ spec:
     services:
         -
             name: web
+            environment_slug: php
             github:
                 branch: main
                 repo: oof-bar/craftcms-do-apps
-            build_command: yarn build
-            environment_slug: php
             run_command: heroku-php-nginx -C nginx.conf /workspace/web/
             http_port: 8080
 
@@ -28,10 +27,10 @@ spec:
         -
             name: release
             environment_slug: php
+            kind: POST_DEPLOY
             github:
                 branch: main
                 repo: oof-bar/craftcms-do-apps
-            kind: POST_DEPLOY
             run_command: /workspace/release.sh
 
     databases:
