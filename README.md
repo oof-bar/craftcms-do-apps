@@ -39,12 +39,6 @@ This means:
 
 You'll notice a couple of extra packages on top of the two in the [Craft starterkit](https://github.com/craftcms/craft).
 
-### `codemix/yii2-streamlog`
-
-Via `app.php`, we've configured a new log target, which pipes all error- and warning-level output to `stderr`.
-
-Anything logged in this way (like Craft exceptions and stack traces) will appear in the Digital Ocean _Logs_ view.
-
 ### `yiisoft/yii2-redis`
 
 This is the first-party Redis adapter for Yii 2. As with logs, we configure the base Redis instance within `app.php`.

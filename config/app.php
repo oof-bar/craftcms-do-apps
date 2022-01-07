@@ -44,16 +44,6 @@ return [
                     'class' => \craft\behaviors\SessionBehavior::class
                 ]
             ],
-            'log' => [
-                'targets' => [
-                    [
-                        'class' => codemix\streamlog\Target::class,
-                        'url' => 'php://stderr',
-                        'levels' => ['error', 'warning'],
-                        'logVars' => []
-                    ]
-                ]
-            ]
         ]
     ]
 ];

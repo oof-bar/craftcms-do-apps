@@ -11,12 +11,12 @@ spec:
             github:
                 branch: main
                 repo: oof-bar/craftcms-do-apps
-            run_command: heroku-php-nginx -C nginx.conf /workspace/web/
+            run_command: vendor/bin/heroku-php-apache2 -C apache.conf web/
             http_port: 8080
 
     workers:
         -
-            name: worker
+            name: queue
             environment_slug: php
             github:
                 branch: main
@@ -31,17 +31,17 @@ spec:
             github:
                 branch: main
                 repo: oof-bar/craftcms-do-apps
-            run_command: /workspace/release.sh
+            run_command: /usr/bin/env php /workspace/craft up
 
     databases:
         -
-            cluster_name: postgres
+            cluster_name: db
             db_name: craft
             db_user: craft
-            engine: PG
-            name: postgres
+            engine: MYSQL
+            name: db
             production: true
-            version: "12"
+            version: "8"
         -
             cluster_name: redis
             engine: REDIS
@@ -77,4 +77,4 @@ spec:
         -
             key: DATABASE_URL
             scope: RUN_AND_BUILD_TIME
-            value: ${postgres.DATABASE_URL}
+            value: ${db.DATABASE_URL}
