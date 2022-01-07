@@ -48,27 +48,34 @@ spec:
             key: CRAFT_LICENSE_KEY
             scope: RUN_AND_BUILD_TIME
             value: Add your Craft license key
+            type: GENERAL
         -
             key: CRAFT_STORAGE_PATH
             scope: RUN_AND_BUILD_TIME
             value: /tmp
+            type: GENERAL
         -
             key: ENVIRONMENT
             scope: RUN_AND_BUILD_TIME
             value: production
+            type: GENERAL
         -
             key: SECURITY_KEY
             scope: RUN_AND_BUILD_TIME
             value: Generate your own, secure random key!
+            type: GENERAL
         -
             key: BASE_URL
             scope: RUN_AND_BUILD_TIME
             value: ${APP_URL}
+            type: GENERAL
         -
             key: REDIS_URL
             scope: RUN_AND_BUILD_TIME
             value: ${redis.REDIS_URL}
+            type: GENERAL
         -
             key: DATABASE_URL
             scope: RUN_AND_BUILD_TIME
             value: ${db.DATABASE_URL}
+            type: GENERAL
