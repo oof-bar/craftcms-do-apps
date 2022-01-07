@@ -37,9 +37,11 @@ spec:
         -
             engine: MYSQL
             name: db
+            production: true
         -
             engine: REDIS
             name: redis
+            production: true
 
     envs:
         -
