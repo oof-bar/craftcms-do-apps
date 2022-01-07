@@ -34,16 +34,8 @@ spec:
             run_command: /usr/bin/env php /workspace/craft up
 
     databases:
-        -
-            engine: MYSQL
-            name: db
-            production: true
-            cluster_name: 'craft-mysql'
-        -
-            engine: REDIS
-            name: redis
-            production: true
-            cluster_name: 'craft-redis'
+        -   name: db
+        -   name: redis
 
     envs:
         -
