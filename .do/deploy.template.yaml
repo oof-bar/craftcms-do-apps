@@ -34,8 +34,12 @@ spec:
             run_command: /usr/bin/env php /workspace/craft up
 
     databases:
-        -   name: db
-        -   name: redis
+        -
+            name: db
+            engine: MYSQL
+        -
+            name: redis
+            engine: REDIS
 
     envs:
         -
