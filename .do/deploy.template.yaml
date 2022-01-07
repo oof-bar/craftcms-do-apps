@@ -40,6 +40,8 @@ spec:
         -
             name: redis
             engine: REDIS
+            production: true
+            cluster_name: craft-redis
 
     envs:
         -
