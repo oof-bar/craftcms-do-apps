@@ -35,19 +35,11 @@ spec:
 
     databases:
         -
-            cluster_name: db
-            db_name: craft
-            db_user: craft
             engine: MYSQL
             name: db
-            production: true
-            version: "8"
         -
-            cluster_name: redis
             engine: REDIS
             name: redis
-            production: true
-            version: "6"
 
     envs:
         -
