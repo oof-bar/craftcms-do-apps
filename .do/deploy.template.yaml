@@ -38,10 +38,12 @@ spec:
             engine: MYSQL
             name: db
             production: true
+            cluster_name: 'craft-mysql'
         -
             engine: REDIS
             name: redis
             production: true
+            cluster_name: 'craft-redis'
 
     envs:
         -
