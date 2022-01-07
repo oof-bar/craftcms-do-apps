@@ -36,7 +36,7 @@ spec:
     databases:
         -
             name: db
-            engine: MYSQL
+            engine: PG
         -
             name: redis
             engine: REDIS
