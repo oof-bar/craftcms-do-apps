@@ -1,0 +1,22 @@
+dateModified: 1649096308
+email:
+  fromEmail: hello@oof.studio
+  fromName: 'App Platform Demo'
+  transportType: craft\mail\transportadapters\Sendmail
+meta:
+  __names__:
+    6c9d74c1-44a3-4df8-a762-50e25d167bd9: 'App Platform Demo' # App Platform Demo
+    b821c0cc-b45f-4bfc-9a78-9c7e5e92a4a6: Common # Common
+    c6f77845-bd3b-450d-8584-ca62929e2909: 'App Platform Demo' # App Platform Demo
+system:
+  edition: solo
+  live: true
+  name: 'App Platform Demo'
+  schemaVersion: 3.7.33
+  timeZone: America/Los_Angeles
+users:
+  allowPublicRegistration: false
+  defaultGroup: null
+  photoSubpath: null
+  photoVolumeUid: null
+  requireEmailVerification: true

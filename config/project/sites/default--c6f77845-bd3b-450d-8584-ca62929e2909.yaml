@@ -1,0 +1,8 @@
+baseUrl: $BASE_URL
+handle: default
+hasUrls: true
+language: en-US
+name: 'App Platform Demo'
+primary: true
+siteGroup: 6c9d74c1-44a3-4df8-a762-50e25d167bd9 # App Platform Demo
+sortOrder: 1
