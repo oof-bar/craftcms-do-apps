@@ -16,7 +16,7 @@
     "ext-intl": "*",
     "ext-mbstring": "*",
     "craftcms/cms": "^3.6.4",
-    "vlucas/phpdotenv": "^3.4.0",
+    "vlucas/phpdotenv": "^5.4.0",
     "yiisoft/yii2-redis": "^2.0"
   },
   "autoload": {
