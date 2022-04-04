@@ -44,6 +44,9 @@ return [
                     'class' => \craft\behaviors\SessionBehavior::class
                 ]
             ],
+            'mutex' => [
+                'mutex' => yii\redis\Mutex::class,
+            ],
         ]
     ]
 ];
