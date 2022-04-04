@@ -4,6 +4,9 @@ One-click infrastructure for Craft CMS applications!
 
 [![Deploy to Digital Ocean](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/oof-bar/craftcms-do-apps/tree/main)
 
+> Psst! This button looks like it works, but you'll probably encounter one of about a dozen cryptic errors when trying to create your app—mostly having to do with [limitations of the App Spec system](https://docs.digitalocean.com/products/app-platform/how-to/add-deploy-do-button/#limits) for one-click deploys. It's best to just fork this repo and create a new App from within your Digital Ocean account.
+
+
 ## What's all this, then?
 
 We've been fans of [twelve-factor apps](https://12factor.net/) for a while now. To-date, Heroku has been our platform of choice due to its mature tooling and reliability—but it's expensive and slow. In some cases, the tradeoffs were acceptable—when we needed rock-solid support, uptime, and scalability, there really wasn't an alternative.
@@ -25,6 +28,7 @@ There are some differences, though, and some significantly impact the dev/ops ex
 3. **The UI.** Something feels fundamentally broken about the in-browser experience. Safari threads will crash, drop sockets, or otherwise lock up multiple times per session. I've had to hard-refresh most interfaces to be sure I'm seeing the right state, and sometimes the app won't even reinitialize correctly based on my last known (or presumed) location.
 4. **Scheduled Jobs.** No first-party Component type for CRON may be a non-starter for some applications. If you only need a persistent Queue worker, then you're set—but any kind of scheduled task will be a challenge without some additional work. For the time being, a $5/mo barebones Droplet with a `crontab` can ping a Craft/Yii controller easily enough… until [an official solution](https://www.digitalocean.com/blog/introducing-digitalocean-app-platform-reimagining-paas-to-make-it-simpler-for-you-to-build-deploy-and-scale-apps/) rolls around.
 
+
 ## How does this differ from a normal Craft installation?
 
 A few things make this kind of infrastructure unique—and they all relate to the environments (web, worker, or otherwise) being both multiple _and_ ephemeral.
@@ -45,6 +49,24 @@ This is the first-party Redis adapter for Yii 2. As with logs, we configure the 
 
 > At the moment, direct use of the `REDIS_URL` connection string is not possible, despite the components being packed back into something that looks a lot like what's provided by the platform.
 
-We also replace the default Sessions component with the one provided in the package, ensuring Craft's `SessionBehavior` is applied along with it.
+We also replace the default Session and Mutex components with the ones provided in the package, ensuring Craft's `SessionBehavior` is applied to the former.
+
+
+## But how do I get it working?
+
+As alluded to in the opening paragraph, the "one-click" feature of the App Platform has a ways to go, in terms of feature parity with the apps you can configure from scratch in your account. Don't worry, though—it's still pretty simple.
+
+Prior to getting started, you'll need to create two database clusters: one MySQL or Postgres, and one Redis.
+
+1. Fork this repo, or clone + push it to a new remote;
+2. Connect your GitHub account to the Digital Ocean account you want the app to live in;
+3. Start the process of creating a [new app](https://docs.digitalocean.com/products/app-platform/how-to/create-apps/), and select the new repo as the source;
+4. Some settings will be detected—but here are the important things to update:
+  - Run Command: Either `heroku-php-nginx -C nginx.conf web/` for nginx or `heroku-php-apache2 -C apache.conf web/`;
+  - Environment Variables: Check `.do/deploy.template.yaml` for the keys that should be defined! Some will be auto-populated by the platform (like app and database URLs), but others (Craft-specific keys) require manual entry;
+  - Services: The web service is configured automatically—but you'll have to attach the database + Redis services manually, after-the-fact;
+5. If an initial deploy is started, you might as well cancel it—it won't succeed! Deploys are triggered after adding your databases, anyway—keep in mind that you may see additional failures if one is attached, but not the other. No way around this, as far as I can tell.
+
+> :lightbulb: After you've finished setting up the app, you can set up limitations on your database(s) to ensure only you and the app platform are able to access them.
 
 :deciduous_tree:
