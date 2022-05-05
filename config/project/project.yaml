@@ -1,4 +1,4 @@
-dateModified: 1651769154
+dateModified: 1651775509
 email:
   fromEmail: hello@oof.studio
   fromName: 'App Platform Demo'
@@ -12,15 +12,16 @@ plugins:
   dospaces:
     edition: standard
     enabled: true
-    schemaVersion: 1.0.0
+    schemaVersion: 2.0.0
 system:
   edition: solo
   live: true
   name: 'App Platform Demo'
-  schemaVersion: 3.7.33
+  schemaVersion: 4.0.0.9
   timeZone: America/Los_Angeles
 users:
   allowPublicRegistration: false
+  deactivateByDefault: false
   defaultGroup: null
   photoSubpath: null
   photoVolumeUid: null

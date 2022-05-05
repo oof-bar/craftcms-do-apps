@@ -17,8 +17,8 @@
     "ext-imagick": "*",
     "ext-intl": "*",
     "ext-mbstring": "*",
-    "craftcms/cms": "^3.7.40.1",
-    "vaersaagod/dospaces": "^1.1",
+    "craftcms/cms": "^4.0.0",
+    "vaersaagod/dospaces": "^2.0.0",
     "vlucas/phpdotenv": "^5.4.0",
     "yiisoft/yii2-redis": "^2.0"
   },
