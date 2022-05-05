@@ -1,8 +1,9 @@
 # Dependencies
-vendor
-node_modules
+/vendor
+/node_modules
 
 # Runtime, secrets
 .env
-storage
-web/cpresources
+/storage
+/web/cpresources
+/config/license.key

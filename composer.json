@@ -6,18 +6,24 @@
     "cms",
     "craftcms",
     "digitalocean",
-    "infrastructure"
+    "infrastructure",
+    "paas"
   ],
   "license": "0BSD",
   "homepage": "https://github.com/oof-bar/craft-do-apps/",
   "type": "starterkit",
   "require": {
+    "ext-bcmath": "*",
     "ext-imagick": "*",
     "ext-intl": "*",
     "ext-mbstring": "*",
-    "craftcms/cms": "^3.6.4",
+    "craftcms/cms": "^3.7.40.1",
+    "vaersaagod/dospaces": "^1.1",
     "vlucas/phpdotenv": "^5.4.0",
     "yiisoft/yii2-redis": "^2.0"
+  },
+  "require-dev": {
+    "yiisoft/yii2-shell": "^2.0.3"
   },
   "autoload": {
     "psr-4": {
