@@ -1,6 +1,6 @@
 # Craft CMS + Digital Ocean App Platform
 
-One-click infrastructure for Craft CMS applications!
+(Almost) one-click infrastructure for Craft CMS applications!
 
 [![Deploy to Digital Ocean](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/oof-bar/craftcms-do-apps/tree/main)
 
